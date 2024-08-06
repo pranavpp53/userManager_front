@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import './AddUser.css';
 import { addNewUser } from '../service/allapi';
+import { useNavigate } from 'react-router-dom';
 
 function AddUser() {
+    const navigate = useNavigate();
     const initialFormState = {
-        username: '',
+        userName: '',
         address: '',
         email: '',
         password: '',
@@ -24,7 +26,7 @@ function AddUser() {
 
     const validate = () => {
         const newErrors = {};
-        if (!formData.username) newErrors.username = 'Username is required';
+        if (!formData.userName) newErrors.username = 'Username is required';
         if (!formData.address) newErrors.address = 'Address is required';
         if (!formData.email) newErrors.email = 'Email is required';
         if (!formData.password) newErrors.password = 'Password is required';
@@ -41,11 +43,20 @@ function AddUser() {
         }
 
         try {
-            const response = await addNewUser(formData);
+            const formDataToSend = new FormData();
+            formDataToSend.append('userName', formData.userName);
+            formDataToSend.append('address', formData.address);
+            formDataToSend.append('email', formData.email);
+            formDataToSend.append('password', formData.password);
+            formDataToSend.append('image', formData.image);
+
+            const response = await addNewUser(formDataToSend);
             if (response.status < 300) {
                 alert(response.data.message);
                 setFormData(initialFormState);
                 setErrors({});
+                navigate('/view')
+
             } else {
                 alert(response.data.error || 'An error occurred');
             }
@@ -65,9 +76,9 @@ function AddUser() {
                         <input
                             type="text"
                             className="form-control"
-                            id="username"
-                            name="username"
-                            value={formData.username}
+                            id="userName"
+                            name="userName"
+                            value={formData.userName}
                             onChange={handleChange}
                             placeholder="Enter username"
                         />

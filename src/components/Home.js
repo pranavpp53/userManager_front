@@ -26,7 +26,7 @@ function Home() {
       </div>
       {/* home and about option in side bar */}
       <div className='end_slide'>
-        <a href="/">Home</a>
+        <a href="/view">Home</a>
         <a href="#services">Services</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
@@ -38,8 +38,8 @@ function Home() {
 
       <div className='cover_div'>
         <div className='navDiv'>
-        <a href='/' className='nav_fonts'><i class="fa-solid fa-house"></i> HOME</a>
-          <a className='nav_fonts'>Navbar</a>
+        <a href='/view' className='nav_fonts'><i class="fa-solid fa-house"></i> HOME</a>
+          <a className='nav_fonts'>User Mangaement App <i class="fa-solid fa-user-tie"></i></a>
         </div>
       </div>
 

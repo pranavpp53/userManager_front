@@ -8,6 +8,6 @@ export const getUsers=async()=>{
 }
 
 //add user
-export const addNewUser=async(body)=>{
-    return commonRequest('POST',`${BASE_URL}/api/users/addUser`,body)
-}
+export const addNewUser = async (formData) => {
+    return commonRequest('POST', `${BASE_URL}/api/users/addUser`, formData, true);
+};
