@@ -1,0 +1,9 @@
+.cardStyle{
+    max-width: 540px;
+}
+.allCardDes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
